@@ -1,20 +1,37 @@
 package com.semilleroSpring.semilleroSpring.dto;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class EmployeesDTO implements Serializable {
+public class EmployeesDTO {
     private int employee_id;
     private String first_name;
     private String last_name;
     private String email;
     private String phone_number;
     private String hire_date;
-    private JobsDTO jobs_ID;
+    private String job_id;
     private BigDecimal salary;
     private BigDecimal commission_pct;
     private int manager_id;
-    private DepartamentDTO departament_ID;
+    private int department_id;
+
+    public EmployeesDTO(){
+
+    }
+
+    public EmployeesDTO(int employee_id, String first_name, String last_name, String email, String phone_number, String hire_date, String job_id, BigDecimal salary, BigDecimal commission_pct, int manager_id, int department_id) {
+        this.employee_id = employee_id;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.phone_number = phone_number;
+        this.hire_date = hire_date;
+        this.job_id = job_id;
+        this.salary = salary;
+        this.commission_pct = commission_pct;
+        this.manager_id = manager_id;
+        this.department_id = department_id;
+    }
 
     public int getEmployee_id() {
         return employee_id;
@@ -64,12 +81,12 @@ public class EmployeesDTO implements Serializable {
         this.hire_date = hire_date;
     }
 
-    public JobsDTO getJobs_ID() {
-        return jobs_ID;
+    public String getJob_id() {
+        return job_id;
     }
 
-    public void setJobs_ID(JobsDTO jobs_ID) {
-        this.jobs_ID = jobs_ID;
+    public void setJob_id(String job_id) {
+        this.job_id = job_id;
     }
 
     public BigDecimal getSalary() {
@@ -96,28 +113,11 @@ public class EmployeesDTO implements Serializable {
         this.manager_id = manager_id;
     }
 
-    public DepartamentDTO getDepartament_ID() {
-        return departament_ID;
+    public int getDepartment_id() {
+        return department_id;
     }
 
-    public void setDepartament_ID(DepartamentDTO departament_ID) {
-        this.departament_ID = departament_ID;
-    }
-
-    @Override
-    public String toString() {
-        return "EmployeesDTO{" +
-                "employee_id=" + employee_id +
-                ", first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
-                ", email='" + email + '\'' +
-                ", phone_number='" + phone_number + '\'' +
-                ", hire_date='" + hire_date + '\'' +
-                ", jobs_ID=" + jobs_ID +
-                ", salary=" + salary +
-                ", commission_pct=" + commission_pct +
-                ", manager_id=" + manager_id +
-                ", departament_ID=" + departament_ID +
-                '}';
+    public void setDepartment_id(int department_id) {
+        this.department_id = department_id;
     }
 }

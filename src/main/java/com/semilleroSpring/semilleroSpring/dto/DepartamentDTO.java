@@ -1,12 +1,22 @@
 package com.semilleroSpring.semilleroSpring.dto;
 
-import java.io.Serializable;
 
-public class DepartamentDTO implements Serializable {
+public class DepartamentDTO{
     private int department_id;
     private String department_name;
     private int manager_id;
-    private LocationDTO location_ID;
+    private int location_id;
+
+    public DepartamentDTO(){
+
+    }
+
+    public DepartamentDTO(int department_id, String department_name, int manager_id, int location_id) {
+        this.department_id = department_id;
+        this.department_name = department_name;
+        this.manager_id = manager_id;
+        this.location_id = location_id;
+    }
 
     public int getDepartment_id() {
         return department_id;
@@ -32,12 +42,12 @@ public class DepartamentDTO implements Serializable {
         this.manager_id = manager_id;
     }
 
-    public LocationDTO getLocation_ID() {
-        return location_ID;
+    public int getLocation_id() {
+        return location_id;
     }
 
-    public void setLocation_ID(LocationDTO location_ID) {
-        this.location_ID = location_ID;
+    public void setLocation_id(int location_id) {
+        this.location_id = location_id;
     }
 
     @Override
@@ -46,7 +56,7 @@ public class DepartamentDTO implements Serializable {
                 "department_id=" + department_id +
                 ", department_name='" + department_name + '\'' +
                 ", manager_id=" + manager_id +
-                ", location_ID=" + location_ID +
+                ", location_id=" + location_id +
                 '}';
     }
 }
