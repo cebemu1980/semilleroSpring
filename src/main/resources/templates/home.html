@@ -33,19 +33,18 @@
     <div class="container" >
         <h5>Consulta de empleados </h5>
         <p ></p>
-        <form th:object="${jobsDTO}" method="POST">
+        <form  th:href="@{/api/listJobs }" method="POST">
             <div class="form-group row">
                 <!--ESTE INPUT TOMA EL ID-->
                 <!--    <input type="hidden" th:field="*{job_id}">    -->
                 <div class="col-md-3">
                     <label  for="job_id" class="form-label">Código de cargo</label>
                     <select id="job_id" class="form-select">
-                        <option th:field="*{job_id}"
+                        <option th:href=" @{/listarEmpleados/{id} (id=${job.job_id}) } "
                                 th:each="job:${cargos}"
                                 th:value="${job.job_id}"
                                 th:text="${job.job_id}+'-'+${job.job_title}"
-                                th:selected="true"
-                        >
+                                th:selected="true" >
                         </option>
                     </select>
                 </div>
@@ -54,6 +53,9 @@
                 <input class="btn btn-success" type="submit" value="Consultar">
             </div>
         </form>
+
+    </div>
+    <div class="container">
         <div>
             <h5>Lista de empleados por cargo </h5>
         </div>
@@ -67,14 +69,15 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="em : ${employees}">
-                <td scope="row" th:text="${em.job_id}"></td>
-                <td th:text="${em.job_id}"></td>
-                <td th:text="${em.first_name}"></td>
-                <td th:text="${em.last_name}"></td>
+            <tr th:each="jobsDTO:${listaEmplePorCargo}">
+                <td scope="row" th:text="${jobsDTO.job_id}"></td>
+                <td th:text="${jobsDTO.job_id}"></td>
+                <td th:text="${jobsDTO.first_name}"></td>
+                <td th:text="${jobsDTO.last_name}"></td>
             </tr>
             </tbody>
         </table>
+
     </div>
     <!---->
     <!--Pie de pagina -->

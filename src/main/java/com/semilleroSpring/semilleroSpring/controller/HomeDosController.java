@@ -17,10 +17,10 @@ public class HomeDosController {
     private DepartamentDao departamentDao;
     @RequestMapping("/listarDepartamento")
     public String listarDepartamento(Model model){
-        DepartamentDTO departamentDTO = new DepartamentDTO();
+        //DepartamentDTO departamentDTO = new DepartamentDTO();
         List<DepartamentDTO> listaDepart = departamentDao.listDepartament();
         model.addAttribute("listaDepartam",listaDepart);
-        model.addAttribute("departamentDTO",departamentDTO);
+        //model.addAttribute("departamentDTO",departamentDTO);
         return "/views/homeDos";
     }
     @RequestMapping("/listEmployeeDos/{id}")
