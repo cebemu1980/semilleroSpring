@@ -15,7 +15,7 @@ public class DepartamentDaoImple implements DepartamentDao{
     private JdbcTemplate jdbcTemplate;
     @Override
     public List<DepartamentDTO> listDepartament() {
-        String sql = "SELECT * FROM departments";
+        String sql = "SELECT * FROM departments WHERE manager_id IS NOT NULL";
         return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(DepartamentDTO.class));
     }
 }

@@ -1,11 +1,9 @@
 package com.semilleroSpring.semilleroSpring.dto;
 
-import java.io.Serializable;
-
-public class CountriesDTO implements Serializable {
+public class CountriesDTO {
     private String country_id;
     private String country_name;
-    private RegionDTO region_ID;
+    private int region_id;
 
     public String getCountry_id() {
         return country_id;
@@ -23,20 +21,11 @@ public class CountriesDTO implements Serializable {
         this.country_name = country_name;
     }
 
-    public RegionDTO getRegion_ID() {
-        return region_ID;
+    public int getRegion_id() {
+        return region_id;
     }
 
-    public void setRegion_ID(RegionDTO region_ID) {
-        this.region_ID = region_ID;
-    }
-
-    @Override
-    public String toString() {
-        return "CountriesDTO{" +
-                "country_id='" + country_id + '\'' +
-                ", country_name='" + country_name + '\'' +
-                ", region_ID=" + region_ID +
-                '}';
+    public void setRegion_id(int region_id) {
+        this.region_id = region_id;
     }
 }

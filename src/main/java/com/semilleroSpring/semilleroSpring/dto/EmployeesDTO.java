@@ -15,24 +15,6 @@ public class EmployeesDTO {
     private int manager_id;
     private int department_id;
 
-    public EmployeesDTO(){
-
-    }
-
-    public EmployeesDTO(int employee_id, String first_name, String last_name, String email, String phone_number, String hire_date, String job_id, BigDecimal salary, BigDecimal commission_pct, int manager_id, int department_id) {
-        this.employee_id = employee_id;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.email = email;
-        this.phone_number = phone_number;
-        this.hire_date = hire_date;
-        this.job_id = job_id;
-        this.salary = salary;
-        this.commission_pct = commission_pct;
-        this.manager_id = manager_id;
-        this.department_id = department_id;
-    }
-
     public int getEmployee_id() {
         return employee_id;
     }

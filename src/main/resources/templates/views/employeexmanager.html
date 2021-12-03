@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--se utili esta reendirizacion para thymeleaf xxxx   <html xmlns:th="http://www.thymeleaf.org"> xxxx-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>EmployeeXmanager</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+<!-- Barra de navegación -->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Recursos Humanos</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" th:href="@{/employee/listJobs}">Employee por job</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" th:href="@{/employee/listDepartament}">Employee por departament</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" th:href="@{/employee/listDepartamentXmanager}">Employee por manager</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" th:href="@{/employee/listEmployee}">Employee por history</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" th:href="@{/employee/listEmployeeXcity}">Employee por city</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<!---->
+<div class="container" >
+    <h5>Consulta de empleados por gerencia </h5>
+    <form method="POST">
+        <div class="form-group row">
+            <!--ESTE INPUT TOMA EL ID-->
+            <!--    <input type="hidden" th:field="*{job_id}">    -->
+            <div class="col-md-8">
+                <label class="form-label">Gerencia</label>
+                <select class="form-select">
+                    <option th:each="depxman:${departamentsxmanager}"
+                            th:value="${depxman.manager_id}"
+                            th:text="${depxman.manager_id}+'-'+${depxman.department_name}" >
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <a class="btn btn-success">Consultar</a>
+        </div>
+    </form>
+</div>
+
+<!--Pie de pagina -->
+<footer class="bg-dark text-white text-center fixed-bottom">
+    <div class="container">
+        <p>cealbemu7@gmail.com</p>
+    </div>
+</footer>
+</body>
+</html>

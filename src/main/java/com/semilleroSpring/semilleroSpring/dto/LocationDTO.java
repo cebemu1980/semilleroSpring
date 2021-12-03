@@ -1,15 +1,12 @@
 package com.semilleroSpring.semilleroSpring.dto;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
-
-public class LocationDTO implements Serializable {
+public class LocationDTO {
     private int location_id;
     private String street_address;
     private String postal_code;
     private String city;
     private String state_province;
-    private CountriesDTO countries_ID;
+    private String country_id;
 
     public int getLocation_id() {
         return location_id;
@@ -51,23 +48,11 @@ public class LocationDTO implements Serializable {
         this.state_province = state_province;
     }
 
-    public CountriesDTO getCountries_ID() {
-        return countries_ID;
+    public String getCountry_id() {
+        return country_id;
     }
 
-    public void setCountries_ID(CountriesDTO countries_ID) {
-        this.countries_ID = countries_ID;
-    }
-
-    @Override
-    public String toString() {
-        return "LocationDTO{" +
-                "location_id=" + location_id +
-                ", street_address='" + street_address + '\'' +
-                ", postal_code='" + postal_code + '\'' +
-                ", city='" + city + '\'' +
-                ", state_province='" + state_province + '\'' +
-                ", countries_ID=" + countries_ID +
-                '}';
+    public void setCountry_id(String country_id) {
+        this.country_id = country_id;
     }
 }
