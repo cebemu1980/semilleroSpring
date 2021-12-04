@@ -46,8 +46,8 @@
             <!--ESTE INPUT TOMA EL ID-->
             <!--    <input type="hidden" th:field="*{job_id}">    -->
             <div class="col-md-8">
-                <label  for="job_id" class="form-label">Cargo</label>
-                <select id="job_id" class="form-select">
+                <label class="form-label">Cargo</label>
+                <select class="form-select">
                     <option th:each="job:${cargos}"
                             th:value="${job.job_id}"
                             th:text="${job.job_id}+'-'+${job.job_title}" >
@@ -55,7 +55,7 @@
                 </select>
             </div>
         </div>
-        <div>
+        <div class="col-md-4">
             <a class="btn btn-success">Consultar</a>
         </div>
     </form>
