@@ -13,6 +13,14 @@ public class EmployeesDaoImple implements EmployeesDao{
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+//xxxxxxxxxxxxxxxxxxxxxxxxxx
+    @Override
+    public EmployeesDTO getEmployeePorCarg(String job_id) {
+        String sql = "SELECT * FROM employees WHERE job_id = ? and manager_id and department_id IS NOT NULL ORDER BY first_name";
+        EmployeesDTO employeesDTO = jdbcTemplate.queryForObject(sql, new Object[]{job_id},BeanPropertyRowMapper.newInstance(EmployeesDTO.class));
+        return employeesDTO;
+    }
+
     @Override
     public List<EmployeesDTO> getEmployees() {
         String sql = "SELECT * FROM employees WHERE manager_id and department_id IS NOT NULL ORDER BY first_name";
@@ -22,7 +30,7 @@ public class EmployeesDaoImple implements EmployeesDao{
     @Override
     public List<EmployeesDTO> getEmployeesPorCargo(String job_id) {
         System.out.println("entro a dao xxxxxxxxxxxx"+job_id);
-        String sql = "SELECT * FROM employees WHERE job_id = ?";
+        String sql = "SELECT * FROM employees WHERE job_id = ? and manager_id and department_id IS NOT NULL ORDER BY first_name";
         return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(EmployeesDTO.class),job_id);
     }
 
@@ -34,7 +42,7 @@ public class EmployeesDaoImple implements EmployeesDao{
     }
 
     @Override
-    public List<EmployeesDTO> getEmployeesPorDepartament(int department_id) {
+    public List<EmployeesDTO> getEmployeesPorDepartament(String department_id) {
         String sql = "SELECT e.salary, e.first_name, e.last_name, d.department_name\n" +
                 "FROM employees e \n" +
                 "inner join departments d on e.department_id = d.department_id\n" +
@@ -45,7 +53,7 @@ public class EmployeesDaoImple implements EmployeesDao{
     }
 
     @Override
-    public List<EmployeesDTO> getEmployeesPorManager(int manager_id) {
+    public List<EmployeesDTO> getEmployeesPorManager(String manager_id) {
         String sql = "SELECT e.salary, e.first_name, e.last_name, d.department_name\n" +
                 "FROM employees e \n" +
                 "inner join departments d on e.department_id = d.department_id\n" +

@@ -31,6 +31,8 @@ public class EmployeeController {
     public String listJobs(Model model){
         List<JobsDTO> listJobs = jobService.listarJobs();
         model.addAttribute("cargos",listJobs);
+        List<EmployeesDTO> listEmployee = employeeService.getEmployees();
+        model.addAttribute("employees",listEmployee);
         return "views/employeexjob";
     }
     @RequestMapping("/listEmployee")//http://localhost:8080/employee/listEmployee
@@ -66,13 +68,13 @@ public class EmployeeController {
         return "/views/table/employeexjobtable";
     }
     @RequestMapping("/empleadosXdepartament/{id}")//http://localhost:8080/employee/empleadosXdepartament/:id
-    public String EmpleadosXdepartament(Model model, @PathVariable int id){
+    public String EmpleadosXdepartament(Model model, @PathVariable String id){
         List<EmployeesDTO> allEmpXdepar = employeeService.getEmployeesPorDepartament(id);
         model.addAttribute("tablaEmpXdepar",allEmpXdepar);
         return "/views/table/employeexdepartamentable";
     }
     @RequestMapping("/empleadosXmanager/{id}")//http://localhost:8080/employee/empleadosXmanager/:id
-    public String EmpleadosXmanager(Model model, @PathVariable int id){
+    public String EmpleadosXmanager(Model model, @PathVariable String id){
         List<EmployeesDTO> allEmpXman = employeeService.getEmployeesPorManager(id);
         model.addAttribute("tablaEmpXman",allEmpXman);
         return "/views/table/employeexmanagertable";
@@ -81,6 +83,12 @@ public class EmployeeController {
     public String EmpleadosXhistory(Model model, @PathVariable String id){
         List<EmployeesDTO> allEmpXhist = employeeService.getEmployeesPorNombre(id);
         model.addAttribute("tablaEmpXhist",allEmpXhist);
+        return "/views/table/employeexhistorytable";
+    }
+    @RequestMapping("/listEmployeeHistory")//http://localhost:8080/employee/listEmployeeHistory
+    public String listEmployeeHistory(Model model){
+        List<EmployeesDTO> listEmployee = employeeService.getEmployees();
+        model.addAttribute("employees",listEmployee);
         return "/views/table/employeexhistorytable";
     }
     @RequestMapping("/empleadosXcity/{id}")//http://localhost:8080/employee/empleadosXcity/:id

@@ -47,7 +47,7 @@
       <!--    <input type="hidden" th:field="*{job_id}">    -->
       <div class="col-md-8">
         <label class="form-label">Empleado</label>
-        <select class="form-select">
+        <select th:field="*{ciudad}" class="form-select">
           <option th:each="emp:${employeesxcity}"
                   th:value="${emp.last_name}"
                   th:text="${emp.first_name}+'--'+${emp.last_name}" >

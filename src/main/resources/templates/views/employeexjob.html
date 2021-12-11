@@ -48,9 +48,9 @@
             <div class="col-md-8">
                 <label class="form-label">Cargo</label>
                 <select class="form-select">
-                    <option th:each="job:${cargos}"
-                            th:value="${job.job_id}"
-                            th:text="${job.job_id}+'-'+${job.job_title}" >
+                    <option th:each="job_id:${cargos}"
+                            th:value="${job_id.job_id}"
+                            th:text="${job_id.job_id}+'-'+${job_id.job_title}" >
                     </option>
                 </select>
             </div>
@@ -59,6 +59,46 @@
             <a class="btn btn-success">Consultar</a>
         </div>
     </form>
+</div>
+<div class="container" >
+    <form >
+        <div>
+            <h5>Lista de empleados por empleado </h5>
+        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Email</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Departamento</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Cargo</th>
+                <th scope="col">Salario</th>
+                <th scope="col" >Editar</th>
+                <th scope="col" >Eliminar</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="em : ${employees}">
+                <td style="display: none" scope="row" th:text="${em.employee_id}"></td>
+                <td th:text="${em.first_name}+'--'+${em.last_name}"></td>
+                <td th:text="${em.email}"></td>
+                <td th:text="${em.phone_number}"></td>
+                <td th:text="${em.department_id}"></td>
+                <td th:text="${em.hire_date}"></td>
+                <td th:text="${em.job_id}"></td>
+                <td th:text="${em.salary}"></td>
+                <td><a th:href="@{/edit/editar/{id} (id=${em.employee_id}) }" class="btn btn-warning btn-sm" th:text="'Editar'" title="Editar registro"
+                       onclick="return confirm('Esta seguro de editar el registro?');"></a></td>
+                <td><a class="btn btn-danger btn-sm" th:text="'Eliminar'" title="Eliminar registro"
+                       onclick="return confirm('Esta seguro de eliminar el registro?');"></a></td>
+
+            </tr>
+            </tbody>
+        </table>
+    </form>
+
 </div>
 
 <!--Pie de pagina -->

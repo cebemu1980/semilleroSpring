@@ -33,12 +33,12 @@ public class EmployeeServiceImple implements EmployeeService {
 
 
     @Override
-    public List<EmployeesDTO> getEmployeesPorDepartament(int department_id) {
+    public List<EmployeesDTO> getEmployeesPorDepartament(String department_id) {
         return employeesDao.getEmployeesPorDepartament(department_id);
     }
 
     @Override
-    public List<EmployeesDTO> getEmployeesPorManager(int manager_id) {
+    public List<EmployeesDTO> getEmployeesPorManager(String manager_id) {
         return employeesDao.getEmployeesPorManager(manager_id);
     }
 
