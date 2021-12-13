@@ -14,12 +14,6 @@ public class EmployeesDaoImple implements EmployeesDao{
     private JdbcTemplate jdbcTemplate;
 
 //xxxxxxxxxxxxxxxxxxxxxxxxxx
-    @Override
-    public EmployeesDTO getEmployeePorCarg(String job_id) {
-        String sql = "SELECT * FROM employees WHERE job_id = ? and manager_id and department_id IS NOT NULL ORDER BY first_name";
-        EmployeesDTO employeesDTO = jdbcTemplate.queryForObject(sql, new Object[]{job_id},BeanPropertyRowMapper.newInstance(EmployeesDTO.class));
-        return employeesDTO;
-    }
 
     @Override
     public List<EmployeesDTO> getEmployees() {

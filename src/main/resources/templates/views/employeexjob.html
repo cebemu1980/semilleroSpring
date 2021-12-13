@@ -89,7 +89,7 @@
                 <td th:text="${em.hire_date}"></td>
                 <td th:text="${em.job_id}"></td>
                 <td th:text="${em.salary}"></td>
-                <td><a th:href="@{/edit/editar/{id} (id=${em.employee_id}) }" class="btn btn-warning btn-sm" th:text="'Editar'" title="Editar registro"
+                <td><a class="btn btn-warning btn-sm" th:text="'Editar'" title="Editar registro"
                        onclick="return confirm('Esta seguro de editar el registro?');"></a></td>
                 <td><a class="btn btn-danger btn-sm" th:text="'Eliminar'" title="Eliminar registro"
                        onclick="return confirm('Esta seguro de eliminar el registro?');"></a></td>

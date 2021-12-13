@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/employee")
+@RequestMapping("/employe")
 public class EmployeeController {
     @Autowired
     private JobService jobService;
