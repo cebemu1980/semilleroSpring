@@ -13,8 +13,6 @@ public class EmployeesDaoImple implements EmployeesDao{
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-//xxxxxxxxxxxxxxxxxxxxxxxxxx
-
     @Override
     public List<EmployeesDTO> getEmployees() {
         String sql = "SELECT * FROM employees WHERE manager_id and department_id IS NOT NULL ORDER BY first_name";
@@ -23,20 +21,32 @@ public class EmployeesDaoImple implements EmployeesDao{
 
     @Override
     public List<EmployeesDTO> getEmployeesPorCargo(String job_id) {
-        System.out.println("entro a dao xxxxxxxxxxxx"+job_id);
-        String sql = "SELECT * FROM employees WHERE job_id = ? and manager_id and department_id IS NOT NULL ORDER BY first_name";
-        return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(EmployeesDTO.class),job_id);
+        try {
+            System.out.println("entro a dao xxxxxxxxxxxx"+job_id);
+            String sql = "SELECT * FROM employees WHERE job_id = ? and manager_id and department_id IS NOT NULL ORDER BY first_name";
+            return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(EmployeesDTO.class),job_id);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return null;
     }
 
     @Override
     public List<EmployeesDTO> getEmployeesPorNombre(String last_name) {
+        try {
         System.out.println("entro a dao xxxxxxxxxxxx"+last_name);
-        String sql = "SELECT * FROM employees WHERE last_name = ?";
+        String sql = "SELECT * FROM employees WHERE last_name = ? and manager_id and department_id IS NOT NULL ORDER BY first_name";
         return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(EmployeesDTO.class),last_name);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return null;
     }
 
     @Override
     public List<EmployeesDTO> getEmployeesPorDepartament(String department_id) {
+        try {
+            System.out.println("entro a dao xxxxxxxxxxxx"+department_id);
         String sql = "SELECT e.salary, e.first_name, e.last_name, d.department_name\n" +
                 "FROM employees e \n" +
                 "inner join departments d on e.department_id = d.department_id\n" +
@@ -44,10 +54,16 @@ public class EmployeesDaoImple implements EmployeesDao{
                 "group by e.salary, e.first_name, e.last_name, d.department_name\n" +
                 "order by e.salary desc";
         return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(EmployeesDTO.class),department_id);
+    }catch (Exception ex){
+        ex.printStackTrace();
+    }
+        return null;
     }
 
     @Override
     public List<EmployeesDTO> getEmployeesPorManager(String manager_id) {
+        try {
+            System.out.println("entro a dao xxxxxxxxxxxx"+manager_id);
         String sql = "SELECT e.salary, e.first_name, e.last_name, d.department_name\n" +
                 "FROM employees e \n" +
                 "inner join departments d on e.department_id = d.department_id\n" +
@@ -55,10 +71,16 @@ public class EmployeesDaoImple implements EmployeesDao{
                 "group by e.salary, e.first_name, e.last_name, d.department_name\n" +
                 "order by e.salary desc";
         return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(EmployeesDTO.class),manager_id);
+    }catch (Exception ex){
+        ex.printStackTrace();
+    }
+        return null;
     }
 
     @Override
     public List<EmployeesDTO> getEmployeesPorCity(String first_name) {
+        try {
+            System.out.println("entro a dao xxxxxxxxxxxx"+first_name);
         String sql = "SELECT e.first_name, e.last_name, l.city, l.state_province, c.country_name, r.region_name\n" +
                 "FROM employees e\n" +
                 "INNER JOIN departments d ON e.department_id = d.department_id\n" +
@@ -68,6 +90,10 @@ public class EmployeesDaoImple implements EmployeesDao{
                 "WHERE e.last_name = ? \n" +
                 "GROUP BY e.first_name, e.last_name, l.city, l.state_province, c.country_name, r.region_name";
         return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(EmployeesDTO.class),first_name);
+    }catch (Exception ex){
+        ex.printStackTrace();
+    }
+        return null;
     }
 
 

@@ -21,30 +21,56 @@ public class EmployeeServiceImple implements EmployeeService {
     }
 
     @Override
-    public List<EmployeesDTO> getEmployeesPorCargo(String job_id) {
-
-        return employeesDao.getEmployeesPorCargo(job_id);
+    public List<EmployeesDTO> getEmployeesPorCargo(String job_id){
+        try {
+            return employeesDao.getEmployeesPorCargo(job_id);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return null;
     }
 
     @Override
     public List<EmployeesDTO> getEmployeesPorNombre(String last_name) {
-        return employeesDao.getEmployeesPorNombre(last_name);
+        try {
+            return employeesDao.getEmployeesPorNombre(last_name);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return null;
     }
 
 
     @Override
     public List<EmployeesDTO> getEmployeesPorDepartament(String department_id) {
-        return employeesDao.getEmployeesPorDepartament(department_id);
+        try {
+            return employeesDao.getEmployeesPorDepartament(department_id);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return null;
     }
 
     @Override
     public List<EmployeesDTO> getEmployeesPorManager(String manager_id) {
-        return employeesDao.getEmployeesPorManager(manager_id);
+        try {
+            return employeesDao.getEmployeesPorManager(manager_id);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return null;
     }
 
     @Override
     public List<EmployeesDTO> getEmployeesPorCity(String first_name) {
-        return employeesDao.getEmployeesPorCity(first_name);
+        try {
+            return employeesDao.getEmployeesPorCity(first_name);
+
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        System.out.println("entro a getEmployeesPorCity xxxxxxxxxxxx"+employeesDao.getEmployeesPorCity(first_name));
+        return null;
     }
 
 
