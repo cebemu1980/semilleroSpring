@@ -29,12 +29,12 @@ public class EmployeeControllers {
 
     //Aquí se generaran las consultas del los select o maetros nesesarios para la clase de employees
 
-    @GetMapping("/listJobs")//http://localhost:8080/employees/listJobs
+    @GetMapping("/listJobs")//http://localhost:8081/employees/listJobs
     public ResponseEntity<List<JobsDTO>> listarJobs(){
         List<JobsDTO> listJob = jobService.listarJobs();
         return ResponseEntity.ok(listJob);
     }
-    @GetMapping("/listDepartament")//http://localhost:8080/employees/listDepartament
+    @GetMapping("/listDepartament")//http://localhost:8081/employees/listDepartament
     public ResponseEntity<List<DepartamentDTO>> listDepartaments(){
         List<DepartamentDTO> listDeparta = departamentService.listDepartament();
         return ResponseEntity.ok(listDeparta);

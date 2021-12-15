@@ -50,7 +50,7 @@ public class EmployeesDaoImple implements EmployeesDao{
         String sql = "SELECT e.salary, e.first_name, e.last_name, d.department_name\n" +
                 "FROM employees e \n" +
                 "inner join departments d on e.department_id = d.department_id\n" +
-                "where e.department_id = ?\n" +
+                "where e.department_id = ? and e.manager_id and e.department_id IS NOT NULL\n" +
                 "group by e.salary, e.first_name, e.last_name, d.department_name\n" +
                 "order by e.salary desc";
         return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(EmployeesDTO.class),department_id);
@@ -67,7 +67,7 @@ public class EmployeesDaoImple implements EmployeesDao{
         String sql = "SELECT e.salary, e.first_name, e.last_name, d.department_name\n" +
                 "FROM employees e \n" +
                 "inner join departments d on e.department_id = d.department_id\n" +
-                "where e.manager_id = ?\n" +
+                "where e.manager_id = ? and e.manager_id and e.department_id IS NOT NULL\n" +
                 "group by e.salary, e.first_name, e.last_name, d.department_name\n" +
                 "order by e.salary desc";
         return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(EmployeesDTO.class),manager_id);
@@ -87,7 +87,7 @@ public class EmployeesDaoImple implements EmployeesDao{
                 "INNER JOIN locations l ON d.location_id = l.location_id\n" +
                 "INNER JOIN countries c ON l.country_id = c.country_id\n" +
                 "INNER JOIN regions r ON c.region_id = r.region_id\n" +
-                "WHERE e.last_name = ? \n" +
+                "WHERE e.first_name = ? and e.manager_id and e.department_id IS NOT NULL\n" +
                 "GROUP BY e.first_name, e.last_name, l.city, l.state_province, c.country_name, r.region_name";
         return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(EmployeesDTO.class),first_name);
     }catch (Exception ex){
