@@ -19,4 +19,26 @@ public class JobServiceImple implements JobService{
     public List<JobsDTO> listarJobs() {
         return jobsDao.listarJobs();
     }
+
+    @Override
+    public JobsDTO findById(String id) {
+        return jobsDao.findById(id);
+    }
+
+
+    @Override
+    public int saveJob(JobsDTO jobsDTO) {
+        return jobsDao.saveJob(jobsDTO);
+    }
+
+    @Override
+    public int updateJob(JobsDTO j) {
+        return jobsDao.updateJob(j);
+    }
+
+    @Override
+    public int deleteByIdJob(String id) {
+        return jobsDao.deleteByIdJob(id);
+    }
+
 }

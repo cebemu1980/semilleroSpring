@@ -6,6 +6,10 @@ import java.util.List;
 
 public interface JobsDao {
     List<JobsDTO> listarJobs();
+    JobsDTO findById(String id);
+    int saveJob(JobsDTO jobsDTO);
+    int updateJob(JobsDTO j);
+    int deleteByIdJob(String id);
 
 
 }
