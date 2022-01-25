@@ -10,6 +10,7 @@ public interface JobsDao {
     int saveJob(JobsDTO jobsDTO);
     int updateJob(JobsDTO j);
     int deleteByIdJob(String id);
+    public  int exist(String id);
 
 
 }

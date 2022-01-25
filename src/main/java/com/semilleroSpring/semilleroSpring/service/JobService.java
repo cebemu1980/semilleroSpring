@@ -9,5 +9,6 @@ public interface JobService {
     JobsDTO findById(String id);
     int saveJob(JobsDTO jobsDTO);
     int updateJob(JobsDTO j);
+    int createOrUpdate(JobsDTO jobsDTO);
     int deleteByIdJob(String id);
 }

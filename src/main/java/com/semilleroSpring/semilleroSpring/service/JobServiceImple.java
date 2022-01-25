@@ -36,9 +36,28 @@ public class JobServiceImple implements JobService{
         return jobsDao.updateJob(j);
     }
 
+
+    @Override
+    public int createOrUpdate(JobsDTO jobsDTO) {
+        System.out.println("entro al servicio de createOrUpdate"+jobsDTO);
+        int cuantos = jobsDao.exist(jobsDTO.getJob_id());
+        int exitoso=0;
+        if (cuantos >0) {
+            exitoso=jobsDao.updateJob(jobsDTO);
+
+        }else{
+            exitoso=jobsDao.saveJob(jobsDTO);
+        }
+        return exitoso;
+    }
+
     @Override
     public int deleteByIdJob(String id) {
+        System.out.println("entro al deleteByIdJob de JobServiceImple "+id);
         return jobsDao.deleteByIdJob(id);
     }
+
+
+
 
 }

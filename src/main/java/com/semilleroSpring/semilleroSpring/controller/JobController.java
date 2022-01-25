@@ -42,33 +42,39 @@ public class JobController {
     }
 
     //para actualizar utilizamos em metodo put
-    @PutMapping("/updateJobs/{id}")//http://localhost:8081/job/updateJobs/:id
-    public ResponseEntity<String> updateJobs(@RequestBody JobsDTO j, @PathVariable("id") String id){
-        JobsDTO jobs = jobService.findById(id);
+    @PutMapping("/updateJobs")//http://localhost:8081/job/updateJobs
+    public ResponseEntity<String> updateJobs(@RequestBody JobsDTO jobsDTO){
+        JobsDTO jobs = jobService.findById(jobsDTO.getJob_id());
        if (jobs != null){
-           jobs.setJob_id(id);
-           jobs.setJob_title(j.getJob_title());
-           jobs.setMin_salary(j.getMin_salary());
-           jobs.setMax_salary(j.getMax_salary());
+           jobs.setJob_id(jobsDTO.getJob_id());
+           jobs.setJob_title(jobsDTO.getJob_title());
+           jobs.setMin_salary(jobsDTO.getMin_salary());
+           jobs.setMax_salary(jobsDTO.getMax_salary());
            jobService.updateJob(jobs);
            return new ResponseEntity<>("El cargo se actualizó con éxito",HttpStatus.OK);
        }else {
-           return new ResponseEntity<>("No se puede encontrar el cargo con id"+id,HttpStatus.NOT_FOUND);
+           return new ResponseEntity<>("No se puede encontrar el cargo con id"+jobsDTO.getJob_id(),HttpStatus.NOT_FOUND);
        }
+    }
+    @PostMapping("/createOrUpdate")//http://localhost:8081/job/createOrUpdate
+    public ResponseEntity<Object> createOrUpdate(@RequestBody JobsDTO jobsDTO){
+        jobService.createOrUpdate(jobsDTO);
+        return  new ResponseEntity(jobsDTO,HttpStatus.OK);
     }
 
     //para eliminar utilizaremos el metodo delete
-    @DeleteMapping("/deleteById/{id}")//http://localhost:8081/job/deleteById/:id
-    public ResponseEntity<String> deleteById(@PathVariable String id){
+    @PostMapping("/deleteById")//http://localhost:8081/job/deleteById/:id
+    public ResponseEntity<String> deleteById(@RequestBody JobsDTO jobsDTO){
         try{
-            int dato = jobService.deleteByIdJob(id);
+            int dato = jobService.deleteByIdJob(jobsDTO.getJob_id());
             if (dato == 0){
-                return new ResponseEntity<>("No se puede encontrar el cargo con id="+id,HttpStatus.OK);
+                return new ResponseEntity<>("No se puede encontrar el cargo con id="+jobsDTO.getJob_id(),HttpStatus.OK);
             }
             return new ResponseEntity<>("El cargo se eliminó con éxito",HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>("No se puede eliminar el cargo",HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
 
 }
