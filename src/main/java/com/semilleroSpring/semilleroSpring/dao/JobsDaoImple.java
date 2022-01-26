@@ -57,9 +57,13 @@ public class JobsDaoImple implements JobsDao{
     }
 
     @Override
-    public int updateJob(JobsDTO j) {
+    public int updateJob(JobsDTO jobsDTO) {
         String sql = "UPDATE jobs SET job_title=?, min_salary=?, max_salary=? WHERE job_id=?";
-        return jdbcTemplate.update(sql,new Object[]{j.getJob_title(),j.getMin_salary(),j.getMax_salary(),j.getJob_id()});
+        return jdbcTemplate.update(sql,new Object[]{
+                jobsDTO.getJob_title(),
+                jobsDTO.getMin_salary(),
+                jobsDTO.getMax_salary(),
+                jobsDTO.getJob_id()});
     }
 
     @Override
