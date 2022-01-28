@@ -39,7 +39,7 @@ public class RegionController {
         regionService.createOrUpdate(regionDTO);
         return  new ResponseEntity(regionDTO,HttpStatus.OK);
     }
-    @PostMapping("/deleteRegion")//http://localhost:8081/region/deleteRegion/:id
+    @PostMapping("/deleteRegion")//http://localhost:8081/region/deleteRegion
     public ResponseEntity<Object> deleteRegion(@RequestBody RegionDTO regionDTO){
         regionService.deleteRegion(regionDTO.getRegion_id());
         return new ResponseEntity("eliminando la region",HttpStatus.OK);
